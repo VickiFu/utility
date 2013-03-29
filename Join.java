@@ -57,13 +57,11 @@ public class Join {
 	}
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 
 		if (args.length != 3) {
 			System.out.println("This is the basic Natural join and use tab as the key value delimiter");
 			System.out.println("We collect three arguments, input1 input2 output");
 		} else {
-
 			JobConf conf = new JobConf(Join.class);
 			conf.setJobName("Join Job");
 			conf.setMapperClass(Map.class);
