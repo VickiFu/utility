@@ -72,8 +72,8 @@ public class Join {
 			conf.setReducerClass(Reduce.class);
 			conf.setOutputKeyClass(Text.class);
 			conf.setOutputValueClass(Text.class);
-			FileInputFormat.setInputPaths(conf, new Path(args[0]));
-			FileInputFormat.setInputPaths(conf, new Path(args[1]));
+			FileInputFormat.addInputPath(conf, new Path(args[0]));
+			FileInputFormat.addInputPath(conf, new Path(args[1]));
 			FileOutputFormat.setOutputPath(conf, new Path(args[2]));
 			JobClient.runJob(conf);
 		}
