@@ -1,3 +1,8 @@
+/* <copyright>
+ <author>Vicki Fu</author>
+ <email>vicky.fuyu@gmail.com</email>
+ </copyright>
+*/
 package utility;
 
 import java.io.IOException;
