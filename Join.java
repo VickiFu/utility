@@ -45,28 +45,30 @@ public class Join {
 		public void reduce(Text key, Iterator<Text> values,
 				OutputCollector<Text, Text> output, Reporter reporter)
 				throws IOException {
-			List<String> ValueSet = new ArrayList<String>();
+
+			StringBuilder strBuilder = new StringBuilder();
+
 			while (values.hasNext()) {
-				ValueSet.add(values.next().toString());
+
+				strBuilder.append(values.next().toString());
+				strBuilder.append(" ");
 			}
-			String Result = "";
-			while (ValueSet.size() > 1) { // Natural join
-				Collections.sort(ValueSet);
-				for (String Each : ValueSet) {
-					Result = Result + " " + Each;
-				}
-				output.collect(key, new Text(Result));
-			}
+
+			output.collect(key, new Text(strBuilder.toString()));
+
 		}
 	}
 
 	public static void main(String[] args) throws IOException {
 
 		if (args.length != 3) {
-			System.out.println("This is the basic Natural join and use tab as the key value delimiter");
+			System.out.println("This is basic full join, and use tab as the key value delimiter");
 			System.out.println("We collect three arguments, input1 input2 output");
 		} else {
+
 			JobConf conf = new JobConf(Join.class);
+			FileSystem dfs = FileSystem.get(conf);
+			dfs.delete(new Path(args[2]));
 			conf.setJobName("Join Job");
 			conf.setMapperClass(Map.class);
 			conf.setReducerClass(Reduce.class);
