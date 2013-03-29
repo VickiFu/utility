@@ -31,7 +31,7 @@ public class Join {
 
 			// Parser
 			String input_key = value.toString().split("\t")[0];
-			String input_value = value.toString().split("\t")[0];
+			String input_value = value.toString().split("\t")[1];
 			output.collect(new Text(input_key), new Text(input_value));
 		}
 	}
