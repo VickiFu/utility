@@ -28,7 +28,6 @@ public class Join {
 		public void map(LongWritable key, Text value,
 				OutputCollector<Text, Text> output, Reporter reporter)
 				throws IOException {
-
 			// Parser
 			String input_key = value.toString().split("\t")[0];
 			String input_value = value.toString().split("\t")[1];
